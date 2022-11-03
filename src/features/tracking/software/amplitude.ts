@@ -1,11 +1,10 @@
-import { TrackingSoftware } from 'features/tracking/tracking.types';
+import { Initializable, TrackingSoftware } from 'features/tracking/tracking.types';
 
-class AmplitudeTrackingSoftware implements TrackingSoftware {
+class AmplitudeTrackingSoftware implements Initializable, TrackingSoftware {
   private initialized = false;
 
   initialize(): void {
     this.initialized = true;
-    // DO EXTRA LOGIC
   }
 
   trackEvent(eventName: string, location: string): void {

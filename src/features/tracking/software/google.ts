@@ -1,4 +1,4 @@
-import { TrackingSoftware } from 'features/tracking/tracking.types';
+import { Initializable, TrackingSoftware } from 'features/tracking/tracking.types';
 
 class GoogleTrackingSoftware implements TrackingSoftware {
   trackEvent(eventName: string, location: string): void {
@@ -8,9 +8,9 @@ class GoogleTrackingSoftware implements TrackingSoftware {
   /**
    * We shouldn't have this method in our TrackingSoftware interface if we don't need the initialize feature
    */
-  initialize(): void {
-    // DO NOTHING
-  }
+  // initialize(): void {
+  //DO NOTHING
+  // }
 }
 
 export default GoogleTrackingSoftware;

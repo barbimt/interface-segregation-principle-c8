@@ -4,15 +4,12 @@ import {
   FacebookTrackingSoftware,
   GoogleTrackingSoftware
 } from 'features/tracking/software';
-import { TrackingSoftware } from 'features/tracking/tracking.types';
-
+import { Initializable, TrackingSoftware } from 'features/tracking/tracking.types';
 export interface TrackingState {
   trackingSoftwares: TrackingSoftware[];
   trackEvent: (eventName: string, location: string) => void;
 }
-
 const TrackingContext = createContext<TrackingState | undefined>(undefined);
-
 export const TrackingProvider: FC = ({ children }) => {
   const [trackingSoftwares] = useState([
     new AmplitudeTrackingSoftware(),
@@ -25,9 +22,11 @@ export const TrackingProvider: FC = ({ children }) => {
       trackingSoftwares,
       trackEvent: (eventName: string, location: string) =>
         trackingSoftwares.forEach((trackingSoftware) => {
-          // Why do we initialize every service ?? if google doesn't require initialization
-          trackingSoftware.initialize();
-          trackingSoftware.trackEvent(eventName, location);
+          if ('initialize' in trackingSoftware) {
+            trackingSoftware.initialize();
+          } else {
+            trackingSoftware.trackEvent(eventName, location);
+          }
         })
     }),
     [trackingSoftwares]
