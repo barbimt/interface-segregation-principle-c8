@@ -4,8 +4,11 @@ class FacebookTrackingSoftware implements Initializable, TrackingSoftware {
   private initialized = false;
 
   initialize(): void {
-    this.initialized = true;
-    // DO EXTRA LOGIC
+    if (!this.initialized) {
+      console.log('Amplitude initialized');
+      this.initialized = true
+
+    }
   }
 
   /**

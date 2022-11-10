@@ -4,7 +4,12 @@ class AmplitudeTrackingSoftware implements Initializable, TrackingSoftware {
   private initialized = false;
 
   initialize(): void {
-    this.initialized = true;
+    if (!this.initialized) {
+      console.log('Amplitude initialized');
+      this.initialized = true
+
+    }
+    // this.initialized = true;
   }
 
   trackEvent(eventName: string, location: string): void {

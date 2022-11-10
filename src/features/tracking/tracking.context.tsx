@@ -4,7 +4,7 @@ import {
   FacebookTrackingSoftware,
   GoogleTrackingSoftware
 } from 'features/tracking/software';
-import { Initializable, TrackingSoftware } from 'features/tracking/tracking.types';
+import {  TrackingSoftware } from 'features/tracking/tracking.types';
 export interface TrackingState {
   trackingSoftwares: TrackingSoftware[];
   trackEvent: (eventName: string, location: string) => void;
